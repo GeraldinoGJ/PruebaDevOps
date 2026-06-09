@@ -1,0 +1,19 @@
+name: Alert ntfy.sh/devops-itla
+on:
+  push:
+    branches: [ main ]
+    
+jobs:
+  send-alert:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Ejecutar Index.js
+      run: node Index.js
+
+    - name: Send alert to ntfy.sh/devops-itla
+        run: |
+          curl -X POST -d "Hello, this is an alert from GitHub Actions!, Geraldino Geraldo Jaquez | 2024-2517" https://ntfy.sh/devops-itla
+
